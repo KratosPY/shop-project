@@ -60,12 +60,7 @@ const checkout = () => {
 const query = route.query
 defineProps<Product>()
 
-const isOpenReqModal = () => {
-  if (isOpenCartStore.isOpenCart) {
-    return false
-  }
-  return false
-}
+
 </script>
 <template>
   <div class="mt-16 m-40">
