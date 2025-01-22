@@ -1,46 +1,40 @@
-## Стек технологий
-- Vue.js
+# Онлайн магазин
+
+# Реализация https://shop-project-steel-six.vercel.app
+
+Этот проект представляет собой онлайн-магазин, который предоставляет пользователям возможность просматривать товары, добавлять их в корзину, оформлять заказы и выбирать способы доставки. Также реализован функционал лайков для товаров и пагинация каталога товаров.
+
+## Функционал
+
+### Каталог
+- В карточках товаров можно ставить и снимать лайки.
+- Реализованы табы для фильтрации товаров по категориям.
+- Товары можно добавлять в корзину.
+- Реализована пагинация: кнопка "Show more" позволяет загружать следующие товары.
+
+### Попапы
+- В попапе лайков можно:
+  - Снять лайк.
+  - Перейти на страницу товара.
+- В попапе корзины можно:
+  - Удалить товар.
+  - Перейти на страницу товара.
+  - Перейти на страницу оформления заказа.
+
+### Карточка товара
+- Можно добавить товар в корзину.
+- Посмотреть информацию о товаре
+
+### Страница оформления заказа
+- Можно удалить товар.
+- Можно выбрать вариант доставки: Pickup или Delivery. Стоимость доставки для каждого варианта разная и учитывается в заказе.
+- Для варианта **Pickup** отсутствуют поля **Delivery region** и **Delivery address**.
+- Поля формы **Full name** и **Phone** обязательны для заполнения. Реализована валидация этих полей на минимальное количество символов. Ошибки подсвечиваются.
+
+## Технологии
+- Vue 3 Composition API
+- Vue Router
 - Pinia
-- TypeScript
-- PostgreSQL
-- Docker
+- API товаров: fakestoreapi.com
+- Адаптивная верстка
 
-# shop-project
-
-This template should help get you started developing with Vue 3 in Vite.
-
-## Recommended IDE Setup
-
-[VSCode](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur).
-
-## Type Support for `.vue` Imports in TS
-
-TypeScript cannot handle type information for `.vue` imports by default, so we replace the `tsc` CLI with `vue-tsc` for type checking. In editors, we need [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) to make the TypeScript language service aware of `.vue` types.
-
-## Customize configuration
-
-See [Vite Configuration Reference](https://vite.dev/config/).
-
-## Project Setup
-
-```sh
-npm install
-```
-
-### Compile and Hot-Reload for Development
-
-```sh
-npm run dev
-```
-
-### Type-Check, Compile and Minify for Production
-
-```sh
-npm run build
-```
-
-### Lint with [ESLint](https://eslint.org/)
-
-```sh
-npm run lint
-```
