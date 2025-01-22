@@ -17,23 +17,23 @@ interface Product {
   title: string
 }
 
-const isOpenCartStore = useIsOpenModal()
+const isOpenModalStore = useIsOpenModal()
 const route = useRoute()
 const cartStore = useCartStore()
 const isInCartItem = ref(false)
+const isOpenCart = computed(() => isOpenModalStore.isOpenCart)
 const cartCount = computed(() => cartStore.cartItemCount)
 const cartItems = ref<Product[]>([])
-const getItemsInCart = async () => {
+const getItemsInCart = () => {
   cartItems.value = cartStore.cart
 }
 const addToCartPinia = (productId: number) => {
   isInCartItem.value = true
   cartStore.addToCart(productId)
 }
-
 const openCart = () => {
-  getItemsInCart();
-  isOpenCartStore.openModalCart()
+  getItemsInCart()
+  isOpenModalStore.openModalCart();
 }
 const checkIfInCart = () => {
   const productId = Number(query.id)
@@ -46,23 +46,25 @@ watch(
   () => cartStore.cart,
   () => {
     checkIfInCart()
+    cartItems.value = cartStore.cart
+    console.log('Updated cart items in watch:', cartItems.value)
   },
   { deep: true },
 )
 const closeCart = () => {
-  isOpenCartStore.closeModalCart()
+  isOpenModalStore.closeModalCart()
 }
 const checkout = () => {
-  isOpenCartStore.closeModalCart()
+  isOpenModalStore.closeModalCart()
 }
 const query = route.query
 defineProps<Product>()
 
 const isOpenReqModal = () => {
-  if (isOpenCartStore.isOpenCart){
-    return false;
+  if (isOpenCartStore.isOpenCart) {
+    return false
   }
-  return false;
+  return false
 }
 </script>
 <template>
@@ -108,7 +110,7 @@ const isOpenReqModal = () => {
             Already in your cart
           </button>
         </div>
-        <Modal v-if="!isOpenReqModal">
+        <Modal v-if="isOpenCart">
           <h1 class="font-semibold text-2xl mb-5">Your cart</h1>
           <div v-if="cartCount === 0">
             <p>Cart is empty</p>
