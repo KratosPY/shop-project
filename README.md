@@ -36,5 +36,4 @@
 - Vue Router
 - Pinia
 - API товаров: fakestoreapi.com
-- Адаптивная верстка
 
