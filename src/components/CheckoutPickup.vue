@@ -28,12 +28,12 @@ const errors: Ref = ref([]);
 <template>
   <div class="justify-start flex flex-col max-w-96 ml-2 pb-16" >
     <div class="flex flex-col gap-1 ml-2">
-      <p v-if="errors.length">
+      <div v-if="errors.length">
         <b>Please correct the following error(s):</b>
         <ul>
           <li v-for="error in errors" :key="error.id"><span class="text-red-700">{{ error }}</span></li>
         </ul>
-      </p>
+      </div>
       <label for="fullName" class="text-lg">Full name<span class="text-red-700">*</span></label>
       <input
         id="fullName"
